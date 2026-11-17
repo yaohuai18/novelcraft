@@ -25,6 +25,17 @@ AI 长篇小说创作平台：前后端分离（FastAPI + SQLite + React/Vite）
 - AI 模式：配置 DEEPSEEK_API_KEY 后启用，真实调用 DeepSeek（OpenAI 兼容 Chat Completions），返回 `mode=real`
 - API Key 只存于服务端环境变量，绝不写入前端 / localStorage
 
+## 技术栈与质量体系
+
+- 技术栈：Python 3.11 · FastAPI · SQLAlchemy async · Pydantic 2 · SQLite（WAL 模式）｜ React 18 · Vite 5 · TypeScript
+- 4 维一致性快速校验：伏笔顺序 / 时间线（支持中文年号）/ 人物状态（死亡后行动）/ 规则关键词，保存前自动体检
+- 追读力报告：章末钩子覆盖率、爽点密度、伏笔债务（规则版计算，零 AI 成本）
+- 失败样本自动沉淀：AI 改写后与原文差异过大时入库，供提示词迭代
+- 全文检索：SQLite FTS5 + 中文 bigram 索引（1-3 字词条短语查询）
+- 数据安全：SQLite WAL、每日自动备份 + 月度恢复演练、迁移网关（SCHEMA_VERSION 版本化）
+- 测试：pytest 810 用例基线（`TEMP` 指向可写目录后 `python -m pytest tests/ -q`）
+
+
 ## 目录结构
 
 ```
