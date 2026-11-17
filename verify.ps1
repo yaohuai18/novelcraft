@@ -100,7 +100,7 @@ Record 'git diff --check' $gdCode
 Rule '2/4 后端 pytest（离线回归）'
 Push-Location (Join-Path $root 'backend')
 $sw = [Diagnostics.Stopwatch]::StartNew()
-# 2026-11-15 已知坑：venv 的 Marvis 运行时 Python 写不了系统 TEMP（AppData\Local\Temp 被拒），
+# 已知坑：部分受限沙箱的 Python 写不了系统 TEMP（AppData\Local\Temp 被拒），
 # tempfile 回退到 cwd → pytest tmp_path 落进仓库内 → 快照类测试的「非 git 仓库」假设失效（37 项失败）。
 # 修复：验收时把 TEMP/TMP/TMPDIR 指向仓库外的可写目录（default-workspace\.pytest-tmp）。
 $ncTestTemp = Join-Path $root '..\.pytest-tmp'
