@@ -1,0 +1,55 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 密钥与环境配置（密钥绝不入库）
+.env
+.env.*
+!.env.example
+
+# 日志与运行残留
+*.log
+*.err
+*.out
+
+# 数据库（基线备份单独管理，不入库）
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# 备份
+*.bak
+backups/
+
+# IDE
+.vscode/
+.idea/
+
+# 临时
+temp/
+
+# 数据库迁移备份不入库
+*.db.bak-*
+
+# 排查残留的探针输出（不是源码，不要提交）
+probe_*.txt
+probe_*.log
+
+# 启动脚本日志目录
+autostart_logs/
+
+# pytest 临时目录（必须带仓库外 TEMP 跑测试，防泄漏入库）
+pytest-of-*/
+
+# 删除前快照（恢复数据，留在本地，不入库）
+trash_snapshots/
